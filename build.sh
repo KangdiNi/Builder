@@ -15,8 +15,8 @@ fi
 ## function
 function build() {
   # 设置node环境变量
-  export NODE_PATH=/home/xiaoju/node-v8.9.1-linux-x64:/home/xiaoju/node-v8.9.1-linux-x64/lib/node_modules
-  export PATH=/home/xiaoju/node-v8.9.1-linux-x64/bin:$PATH
+  export NODE_PATH=/home/kangdi/node-v8.9.1-linux-x64:/home/kangdi/node-v8.9.1-linux-x64/lib/node_modules
+  export PATH=/home/kangdi/node-v8.9.1-linux-x64/bin:$PATH
   echo -e "node: `node -v`, npm: `npm -v`, yarn: `yarn -v`"
 
   yarn --ignore-engines
