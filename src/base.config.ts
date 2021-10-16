@@ -137,6 +137,7 @@ export function getBaseConfig(options: ConfigOptions) {
             name: 'assets/fonts/[name].[hash:7].[ext]',
           },
         },
+        // 将.js文件中的es6语法转成es5语法
         {test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
         // 配置 vue-loader 来处理 .vue 文件
         { test: /\.vue$/, use: 'vue-loader' },
