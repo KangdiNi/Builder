@@ -23,9 +23,9 @@ export interface Configuration extends webpack.Configuration, WebpackDevServer.C
 // 配置参数
 export interface ConfigOptions {
   moduleName: string; // 线上环境的静态文件节点名称/或者节点位置
+  devPort?: number;
   static: string; // 镜像节点 举例 https://static.global.com， 注意最后没有反斜杠
   report?: boolean; //是否打印日志报告
-  devPort?: number;
 }
 
 //获取基础配置
@@ -71,7 +71,6 @@ export function getBaseConfig(options: ConfigOptions) {
        */
     },
     resolve: {
-      extentions: ['.tsx', '.ts', '.jsx', '.js'], // 在导入语句没带文件后缀时，Webpack 会自动带上后缀后去尝试访问文件是否存在
       modules: [Root('node_modules'), 'node_modules', Root('src')],
       /**
        * 配置 Webpack 去哪些目录下寻找第三方模块，默认是只会去  node_modules  目录下寻找
@@ -85,13 +84,14 @@ export function getBaseConfig(options: ConfigOptions) {
        * 你可以简单通过  import 'button'  导入。
        */
 
-      alias: {
-        //   components: './src/components/'
-      }
+      // alias: {
+      //   //   components: './src/components/'
+      // }
       /**
        * 当你通过  import Button from 'components/button 导入时，实际上被 alias 等价替换成了  import Button from './src/components/button' 。
        * 以上 alias 配置的含义是把导入语句里的  components  关键字替换成  ./src/components/ 。
        */
+      extensions: ['.tsx', '.ts', '.jsx', '.js'], // 在导入语句没带文件后缀时，Webpack 会自动带上后缀后去尝试访问文件是否存在
     },
     module: {
       rules: [
@@ -137,6 +137,7 @@ export function getBaseConfig(options: ConfigOptions) {
             name: 'assets/fonts/[name].[hash:7].[ext]',
           },
         },
+        // {test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
         // {
         //   test: /\.md$/,
         //   use: {

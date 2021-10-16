@@ -81,7 +81,7 @@ function createPreConfig(options: ConfigOptions, extra: Configuration = {}) {
       },
 
       plugins: [
-        new webpack.DefinePlugins({
+        new webpack.DefinePlugin({
           'process.env.D_ENV': '"pre"'
         }),
         new HtmlPlugin({
