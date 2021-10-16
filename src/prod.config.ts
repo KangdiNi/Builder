@@ -20,7 +20,7 @@ function createProdConfig(options: ConfigOptions, extra: Configuration = {}) {
       },
 
       plugins: [
-        new webpack.DefinePlugins({
+        new webpack.DefinePlugin({
           'process.env.D_ENV': '"production"',
         }),
 
