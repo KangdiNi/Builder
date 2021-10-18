@@ -22,9 +22,9 @@ export interface Configuration extends webpack.Configuration, WebpackDevServer.C
 
 // 配置参数
 export interface ConfigOptions {
+  static: string; // 镜像节点 举例 https://static.global.com， 注意最后没有反斜杠
   moduleName: string; // 线上环境的静态文件节点名称/或者节点位置
   devPort?: number;
-  static: string; // 镜像节点 举例 https://static.global.com， 注意最后没有反斜杠
   report?: boolean; //是否打印日志报告
 }
 
