@@ -70,6 +70,7 @@ export function getDevConfig(options: ConfigOptions, extra: Configuration = {}) 
       devServer: {
         port: PORT,
         open: true,
+        quiet: true,
         historyApiFallback: true,
         /**
          * devServer.historyApiFallback的意思是当路径匹配的文件不存在时不出现404,

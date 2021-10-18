@@ -15,7 +15,7 @@ export function getTestConfig(options: ConfigOptions, extra: Configuration = {})
 
     {
       output: {
-        publicPath: '/'
+        publicPath: `${options.static}/${options.moduleName}/`,
       },
 
       plugins: [
