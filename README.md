@@ -42,3 +42,28 @@ Builder
 └─ yarn.lock
 
 ```
+
+默认应用项目路径为
+Project
+├─ node_modules
+├─ dist
+│  └─ xxxx
+└─ src
+   ├─ index.ts
+   └─  index.html
+
+默认配置涉及：
+entry (src/index.ts)
+output (dist)
+resolve / modules (src, node_modules)
+cleanWebPackPlugins (dist)
+
+dev:
+  devServer / contentBase (dist)
+  HtmlPlugin / template (src/index.html)
+
+test:
+  HtmlPlugin / template (src/index.html)  
+prod,pre:
+  HtmlPlugin / template (src/index.html)
+

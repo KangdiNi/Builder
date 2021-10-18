@@ -31,7 +31,7 @@ export interface ConfigOptions {
 //获取基础配置
 export function getBaseConfig(options: ConfigOptions) {
   const config: Configuration = {
-    mode: 'none', //由指定环境config的mode进行配置，默认production
+    mode: 'none', //由指定环境config的mode进行配置，默认production，不使用任何优化
 
     entry: {
       app: Root('src/index'), // name ==> app
