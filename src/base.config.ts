@@ -46,7 +46,7 @@ export function getBaseConfig(options: ConfigOptions) {
        * “path”仅仅告诉Webpack结果存储在哪里，
        */
       publicPath: '/',
-      //“publicPath”项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值， “publicPath”项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值
+      //“publicPath”项则被许多Webpack的插件用于在生产模式下更新内嵌到css、html文件里的url值，
       /**
        * 例如，在localhost（即本地开发模式）里的css文件中边你可能用“./test.png”这样的url来加载图片，但是在生产模式下“test.png”文件可能会定位到CDN上并且你的Node.js服务器可能是运行在HeroKu上边的。这就意味着在生产环境你必须手动更新所有文件里的url为CDN的路径。
        * 
@@ -64,6 +64,7 @@ export function getBaseConfig(options: ConfigOptions) {
       chunkFilename: 'assets/js/chunks/[name]_[contenthash:8].js',
       /**
        * chunkname我的理解是未被列在entry中，却又需要被打包出来的文件命名配置。
+       * 没指定也会打包，此处为显式指定该部分文件的名称
        * 
        * 什么场景需要呢？
        * 在按需加载（异步）模块的时候，这样的文件是没有被列在entry中的，如使用CommonJS的方式异步加载模块
