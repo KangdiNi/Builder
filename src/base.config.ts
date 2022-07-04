@@ -10,20 +10,19 @@ import merge from 'webpack-merge';
  */
 import * as webpack from 'webpack';
 import { createHappyPlugin } from './happypack';
-import * as CopyPlugin from 'copy-webpack-plugin';
 import * as WebpackDevServer from 'webpack-dev-server';
 import * as MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import * as ParallelUglifyPlugin from 'webpack-parallel-uglify-plugin';
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const optimizeCss = require('optimize-css-assets-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 // 配置
 export interface Configuration extends webpack.Configuration, WebpackDevServer.Configuration { }
 
 // 配置参数
 export interface ConfigOptions {
-  static: string; // 镜像节点 举例 https://static.global.com， 注意最后没有反斜杠
-  moduleName: string; // 线上环境的静态文件节点名称/或者节点位置
+  static: string; // 镜像节点 举例 https://static.global.com/ibt/pope-next， 注意最后没有反斜杠
   devPort?: number;
   report?: boolean; //是否打印日志报告
 }
@@ -123,7 +122,7 @@ export function getBaseConfig(options: ConfigOptions) {
           },
         },
         {
-          test: /\.(mp4|webm|ogg|mp3|wav|flac|aac)(\?.*)?$/,
+          test: /\.(mp4|webm|ogg|mp3|wav|flac|aac|gif)(\?.*)?$/,
           loader: 'url-loader',
           options: {
             limit: 1024,
@@ -139,7 +138,7 @@ export function getBaseConfig(options: ConfigOptions) {
           },
         },
         // 将.js文件中的es6语法转成es5语法
-        {test: /\.js$/, use: 'babel-loader', exclude: /node_modules/},
+        { test: /\.js$/, use: 'babel-loader', exclude: /node_modules/ },
         // 配置 vue-loader 来处理 .vue 文件
         { test: /\.vue$/, use: 'vue-loader' },
         // {
@@ -271,7 +270,7 @@ export function getBaseConfig(options: ConfigOptions) {
         },
       ]),
 
-      CleanWebpackPlugin(['dist'],{
+      CleanWebpackPlugin(['dist'], {
         root: Root(), //一个根的绝对路径
         verbose: true,// 将log写到 console.
         dry: false,// 不要删除任何东西，主要用于测试.
@@ -318,11 +317,11 @@ export function getProdBaseConfig(options: ConfigOptions) {
       new MiniCssExtractPlugin({
         filename: '/assets/styles/style_[hash:8].css',
       }),
-      
+
       new optimizeCss({
         cssProcessor: require('cssnano'), //引入cssnano配置压缩选项
-        cssProcessorOptions: { 
-          discardComments: { removeAll: true } 
+        cssProcessorOptions: {
+          discardComments: { removeAll: true }
         },
         canPrint: true //是否将插件信息打印到控制台
       })
@@ -416,14 +415,14 @@ export function getProdBaseConfig(options: ConfigOptions) {
  *   plugins: [
  *       new optimizeCss()
  *   ]
- * 
- * 
+ *
+ *
  * 使用cssnano规则压缩：
  * plugins: [
  *     new optimizeCss({
  *             cssProcessor: require('cssnano'), //引入cssnano配置压缩选项
- *             cssProcessorOptions: { 
- *             discardComments: { removeAll: true } 
+ *             cssProcessorOptions: {
+ *             discardComments: { removeAll: true }
  *            },
  *             canPrint: true //是否将插件信息打印到控制台
  *         })

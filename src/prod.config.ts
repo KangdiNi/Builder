@@ -16,7 +16,7 @@ function createProdConfig(options: ConfigOptions, extra: Configuration = {}) {
 
     {
       output: {
-        publicPath: `${options.static}/${options.moduleName}/`,
+        publicPath: `${options.static}`,
       },
 
       plugins: [
@@ -76,7 +76,7 @@ function createPreConfig(options: ConfigOptions, extra: Configuration = {}) {
 
     {
       output: {
-        publicPath: `${options.static}/${options.moduleName}/`,
+        publicPath: `${options.static}`,
         // 静态文件CDN
       },
 
