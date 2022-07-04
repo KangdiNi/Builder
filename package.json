@@ -1,5 +1,5 @@
 {
-  "name": "superbuilders",
+  "name": "@SuperBuilders/webpacker",
   "version": "0.0.2",
   "description": "font-end builder",
   "main": "./dist/index.js",

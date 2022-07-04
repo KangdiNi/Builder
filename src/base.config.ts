@@ -5,9 +5,6 @@
  */
 import { Root } from './utils';
 import merge from 'webpack-merge';
-/**
- * 深度的进行一个merge类似lodash.merge()
- */
 import * as webpack from 'webpack';
 import { createHappyPlugin } from './happypack';
 import * as WebpackDevServer from 'webpack-dev-server';
@@ -392,13 +389,6 @@ export function getProdBaseConfig(options: ConfigOptions) {
  * 所以我们之前的方案每次修改了一点代码，都会将TS代码传递给TypeScript转换为JS，
  * 然后再将这份JS代码传递给Babel转换为低版本JS代码。
  * 因此我们需要配置两个编译器，并且每次做了一点更改，都会经过两次编译。
- */
-
-/**
- * progress-bar-webpack-plugin
- *
- * 编译进度条插件
- * new ProgressBarPlugin()
  */
 
 /**
